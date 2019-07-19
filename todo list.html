@@ -1,0 +1,28 @@
+<html>
+
+</head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script> 
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"> </script> 
+	<script src="todo list.js"> </script>
+</head>
+
+<body>
+<div class="container" ng-app="myApp" ng-controller="todoCtrl">
+	<h2> Todo List </h2>
+	<form ng-submit="todoAdd()">
+		<input type="text" ng-model="todoInput" size="40" placeholder="Input"> 
+		<input class="btn btn-success" type="submit" value="Create">
+	</form>
+	
+	<div ng-repeat="x in todoList">
+		<input type="checkbox" ng-model="x.done"> <span class="task" ng-bind="x.todoText"> </span>
+		<button class="btn btn-edit" ng-click="edit()"> Edit </script> 
+	</div>
+		<button class="btn btn-danger" ng-click="delete()"> Delete </button>
+		
+</body>
+</html>
