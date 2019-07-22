@@ -1,28 +1,44 @@
+<!DOCTYPE html>
 <html>
-
-</head>
+	<!-- untuk fraework angularnya -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"> </script> 
+	<!-- untuk framework bootstrapnya -->
+	<html lang="en">				
+	<head>
+	<title> Todo List </title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	</head>
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"> </script> 
-	<script src="todo list.js"> </script>
-</head>
-
 <body>
-<div class="container" ng-app="myApp" ng-controller="todoCtrl">
-	<h2> Todo List </h2>
-	<form ng-submit="todoAdd()">
-		<input type="text" ng-model="todoInput" size="40" placeholder="Input"> 
-		<input class="btn btn-success" type="submit" value="Create">
-	</form>
-	
-	<div ng-repeat="x in todoList">
-		<input type="checkbox" ng-model="x.done"> <span class="task" ng-bind="x.todoText"> </span>
-		<button class="btn btn-edit" ng-click="edit()"> Edit </script> 
-	</div>
-		<button class="btn btn-danger" ng-click="delete()"> Delete </button>
-		
+<h1> Todo List </h1>
+
+<script>
+var app = angular.module("TodoList", []);
+app.controller("mytodolist", function($scope) {
+	$scope.products = ['x', 'y', 'z'];
+		<!-- untuk menambahkan list -->
+		$scope.addItem = function() { 
+			$scope.products.push ($scope.addMe);
+		}
+		<!-- untuk menghapus list -->
+		$scope.removeItem = function(x) {
+			$scope.products.splice(x, 1);
+		}
+});
+</script>
+
+<div ng-app="TodoList" ng-controller="mytodolist">
+	<ul> <li ng-repeat="x in products"> {{x}} 	
+	<!-- untuk menghapus list -->
+	<button type="button" class="btn btn-danger"> <span ng-click="removeItem($index)"> Delete </span> </li> </ul> 
+	<!-- untuk menambahkan list -->
+	<input ng-model="addMe">
+	<button type="button" class="btn btn-success" ng-click="addItem()" > Create </button>
+</div>
+
 </body>
 </html>
